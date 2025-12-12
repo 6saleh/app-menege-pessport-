@@ -167,5 +167,3 @@ Pull requests and issues are welcome.
 MIT (recommended) — add a LICENSE file if needed.
 
 ---
-
-If you want, I can now generate the **actual source code files** (main.py, database models, services, utils) ready to paste into your repo.
