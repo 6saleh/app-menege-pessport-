@@ -1,0 +1,23 @@
+INFO:     Started server process [14810]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     127.0.0.1:54976 - "POST /passports HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51844 - "GET /passports HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43550 - "PUT /passports/P12345 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36268 - "GET /search/passports?search_term=John%20Smith HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39608 - "DELETE /passports/P12345 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58350 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58350 - "GET /passports HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58350 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:43152 - "POST /passports HTTP/1.1" 400 Bad Request
+INFO:     127.0.0.1:59908 - "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:33724 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33724 - "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:33724 - "GET /passports HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33724 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33724 - "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:33724 - "GET /passports HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41900 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41900 - "GET /passports HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41900 - "GET /favicon.ico HTTP/1.1" 404 Not Found

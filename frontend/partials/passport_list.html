@@ -1,0 +1,34 @@
+
+<table>
+    <thead>
+        <tr>
+            <th>National ID</th>
+            <th>Passport Number</th>
+            <th>Full Name</th>
+            <th>Date of Birth</th>
+            <th>Nationality</th>
+            <th>Issue Date</th>
+            <th>Expiry Date</th>
+            <th>Authority</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for passport in passports %}
+        <tr>
+            <td>{{ passport.national_id }}</td>
+            <td>{{ passport.passport_number }}</td>
+            <td>{{ passport.full_name }}</td>
+            <td>{{ passport.date_of_birth }}</td>
+            <td>{{ passport.nationality }}</td>
+            <td>{{ passport.issue_date }}</td>
+            <td>{{ passport.expiry_date }}</td>
+            <td>{{ passport.authority }}</td>
+            <td>
+                <button hx-delete="/passports/{{ passport.passport_number }}" hx-target="#passport-list" hx-swap="innerHTML">Delete</button>
+                <button @click.prevent="showEditModal = true; editData = { passport_number: '{{ passport.passport_number }}', full_name: '{{ passport.full_name }}', date_of_birth: '{{ passport.date_of_birth }}', nationality: '{{ passport.nationality }}', issue_date: '{{ passport.issue_date }}', expiry_date: '{{ passport.expiry_date }}', authority: '{{ passport.authority }}' }">Edit</button>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>

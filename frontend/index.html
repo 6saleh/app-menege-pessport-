@@ -1,0 +1,67 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Passport Management</title>
+    <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css">
+    <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+    <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+</head>
+<body>
+    <main class="container">
+        <h1>Passport Management</h1>
+
+        <div x-data="{ showAddModal: false, showEditModal: false, editData: {} }">
+            <button @click="showAddModal = true">Add Passport</button>
+
+            <!-- Add Passport Modal -->
+            <div x-show="showAddModal" style="display: none;">
+                <article>
+                    <header>
+                        <a href="#" aria-label="Close" class="close" @click.prevent="showAddModal = false"></a>
+                        Add New Passport
+                    </header>
+                    <form hx-post="/passports" hx-target="#passport-list" hx-swap="innerHTML" @submit="showAddModal = false">
+                        <input type="text" name="national_id" placeholder="National ID" required>
+                        <input type="text" name="passport_number" placeholder="Passport Number" required>
+                        <input type="text" name="full_name" placeholder="Full Name" required>
+                        <input type="text" name="date_of_birth" placeholder="Date of Birth (YYYY-MM-DD)" required>
+                        <input type="text" name="nationality" placeholder="Nationality" required>
+                        <input type="text" name="issue_date" placeholder="Issue Date (YYYY-MM-DD)" required>
+                        <input type="text" name="expiry_date" placeholder="Expiry Date (YYYY-MM-DD)" required>
+                        <input type="text" name="authority" placeholder="Authority" required>
+                        <button type="submit">Add</button>
+                    </form>
+                </article>
+            </div>
+
+            <!-- Edit Passport Modal -->
+            <div x-show="showEditModal" style="display: none;">
+                <article>
+                    <header>
+                        <a href="#" aria-label="Close" class="close" @click.prevent="showEditModal = false"></a>
+                        Edit Passport
+                    </header>
+                    <form :hx-put="'/passports/' + editData.passport_number" hx-target="#passport-list" hx-swap="innerHTML" @submit="showEditModal = false">
+                        <input type="text" name="full_name" placeholder="Full Name" :value="editData.full_name">
+                        <input type="text" name="date_of_birth" placeholder="Date of Birth (YYYY-MM-DD)" :value="editData.date_of_birth">
+                        <input type="text" name="nationality" placeholder="Nationality" :value="editData.nationality">
+                        <input type="text" name="issue_date" placeholder="Issue Date (YYYY-MM-DD)" :value="editData.issue_date">
+                        <input type="text" name="expiry_date" placeholder="Expiry Date (YYYY-MM-DD)" :value="editData.expiry_date">
+                        <input type="text" name="authority" placeholder="Authority" :value="editData.authority">
+                        <button type="submit">Update</button>
+                    </form>
+                </article>
+            </div>
+        </div>
+
+        <input type="search" name="search" placeholder="Search..." hx-get="/search/passports" hx-target="#passport-list" hx-trigger="keyup changed delay:500ms">
+
+        <div id="passport-list" hx-get="/passports" hx-trigger="load">
+            <!-- Passport list will be loaded here -->
+        </div>
+    </main>
+</body>
+</html>
